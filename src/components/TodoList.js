@@ -16,6 +16,21 @@ let data=datak.filter((ele,index)=>{
 setData(data);
 console.log(datak)
 }
+function edit(index){
+    let ele =document.getElementsByClassName('screen')[index];
+    let edit_ele=document.getElementsByClassName('edit')[index];
+    ele.contentEditable=true;
+    document.addEventListener("click",(event)=>{
+        
+        if(event.target==ele || event.target==edit_ele){
+            
+        }else{
+            ele.contentEditable=false;
+            
+        }
+    })
+}
+
   return (
     <div className="container">
         <h1 id="todo-heading">Todo List</h1>
@@ -26,7 +41,7 @@ console.log(datak)
         {datak.map((ele,index)=>
                 <div className="todo-item">
                 <div className="screen todo-item-comp">{ele}</div>
-                <div className="edit todo-item-comp" >Edit</div>
+                <div className="edit todo-item-comp" onClick={()=>{edit(index)}}>Edit</div>
                 <div className="delete todo-item-comp" onClick={()=>{dele(index)}}>Delete</div>
             </div>
         )}
